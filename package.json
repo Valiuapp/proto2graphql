@@ -9,7 +9,10 @@
   "files": [
     "protos",
     "lib",
-    "bin"
+    "bin",
+    "scripts",
+    "src",
+    "tsconfig.json"
   ],
   "scripts": {
     "clean": "rm -rf ./lib ./protos",
@@ -17,7 +20,7 @@
     "test": "nyc mocha -r ts-node/register **/test/**/*.spec.ts",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pull:wkt": "scripts/pull-wkt.sh",
-    "postinstall": "npm run build && pull:wkt"
+    "postinstall": "npm run build && npm run pull:wkt"
   },
   "repository": {
     "type": "git",
@@ -42,9 +45,7 @@
   "dependencies": {
     "commander": "^4.0.1",
     "graphql": "^14.5.8",
-    "protobufjs": "^6.8.8"
-  },
-  "devDependencies": {
+    "protobufjs": "^6.8.8",
     "@types/chai": "^4.2.7",
     "@types/commander": "^2.12.2",
     "@types/graphql": "^14.5.0",
