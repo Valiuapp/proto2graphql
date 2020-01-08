@@ -9,9 +9,12 @@ program
     "-o, --output [path]",
     'path to ".graphql" output, otherwise uses STDOUT'
   )
+  .option("--protos [paths]", "protos folder separated by ,", '')
   .parse(process.argv);
 
-const schema = convert(program.input);
+const protoPaths = program.protos.split(',')
+
+const schema = convert(program.input, protoPaths);
 
 if (program.output) {
   writeFileSync(program.output, schema);
